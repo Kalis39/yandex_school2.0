@@ -1,0 +1,32 @@
+cases = int(input())
+yes_set = set()
+no_set = set()
+total_set = set()
+new_list = []
+
+for case in range(1, cases + 1):
+    total_set.add(case)
+
+is_on = True
+
+while is_on:
+    input_data = input()
+    if input_data == "HELP":
+        is_on = False
+    else:
+        numbers = list(map(int, input_data.split()))
+        conclusion = input()
+        for number in numbers:
+            if conclusion == "YES":
+                yes_set.add(number)
+            else:
+                no_set.add(number)
+        if len(yes_set) >= 1:
+            total_set = total_set.intersection(yes_set)
+        yes_set = set()
+
+for item in total_set.difference(no_set):
+    new_list.append(item)
+new_list = sorted(new_list)
+for item in new_list:
+    print(item, end=" ")
