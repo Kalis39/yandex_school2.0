@@ -1,0 +1,26 @@
+new_dict = {}
+new_cand = []
+
+with open("input.txt", "r") as file:
+    new_list = file.readlines()
+    for cand in new_list:
+        if len(cand) > 2:
+            edit_cand = cand.rstrip("\n")
+            new_cand.append(edit_cand.split())
+
+
+for cand in new_cand:
+    name, number = cand[0], int(cand[1])
+    if name in new_dict:
+        new_dict[name].append(number)
+    else:
+        new_dict[name] = [number]
+
+for key in new_dict:
+    new_dict[key] = sum(new_dict[key])
+
+keylist = new_dict.keys()
+sort_key = sorted(keylist)
+
+for value in sort_key:
+    print(value, new_dict[value])
