@@ -1,0 +1,32 @@
+with open("input.txt", "r") as file:
+    data = file.readlines()
+
+
+position_dict = {}
+result_dict = {}
+count = 1
+
+
+for pos in range(1, len(data)):
+    if data[pos].rstrip("\n") == "0":
+        result_dict[data[pos + 1].rstrip("\n")] = [count]
+    if data[pos].rstrip("\n").isnumeric() and len(data[pos].rstrip("\n")) < 5:
+        position_dict[count] = data[pos].rstrip("\n")
+        count += 1
+
+for key, value in position_dict.items():
+    for r_key, r_value in result_dict.items():
+        if value != "0":
+            if int(value) in r_value:
+                r_value.append(key)
+
+max_value = 0
+for key in result_dict:
+    result_dict[key] = len(result_dict[key]) - 1
+    if result_dict[key] > max_value:
+        max_value = result_dict[key]
+
+for key in result_dict:
+    if result_dict[key] == max_value:
+        print(key)
+        break
