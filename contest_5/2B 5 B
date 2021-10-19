@@ -1,0 +1,11 @@
+size = int(input())
+nums = list(map(int, input().split()))
+maxSum = nums[0]
+total_sum = 0
+minSum = 0
+
+for num in nums:
+    total_sum += num
+    maxSum = max(maxSum, total_sum - minSum)
+    minSum = min(minSum, total_sum)
+print(maxSum)
