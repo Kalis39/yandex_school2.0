@@ -1,0 +1,15 @@
+from bisect import bisect_left, bisect_right
+
+size = int(input())
+nums = sorted(list(map(int, input().split())))
+pairs = int(input())
+counter = 0
+answer = [0] * pairs
+
+for i in range(pairs):
+    l, r = map(int, input().split())
+    left_border = bisect_left(nums, l)
+    right_border = bisect_right(nums, r)
+    answer[i] = right_border - left_border
+
+print(*answer)
