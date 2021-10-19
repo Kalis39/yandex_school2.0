@@ -1,0 +1,16 @@
+from bisect import bisect_left, bisect_right
+
+given = int(input())
+nums = list(map(int, input().split()))
+requests = int(input())
+search_nums = list(map(int, input().split()))
+
+
+for num in search_nums:
+    l, r = nums[0], nums[-1]
+    if num not in nums:
+        print('0', '0')
+    else:
+        left_border = bisect_left(nums, num) + 1
+        right_border = bisect_right(nums, num)
+        print(left_border, right_border)
