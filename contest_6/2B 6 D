@@ -1,0 +1,17 @@
+def bisearch(l, r, check, params):
+    while l < r:
+        m = (l + r) // 2
+        if check(m, params):
+            r = m
+        else:
+            l = m + 1
+    return l
+
+
+def checktrees(days, params):
+    a, m, b, n, trees = params
+    return (days - (days // m)) * a + (days - (days // n)) * b >= trees
+
+
+input_data = tuple(map(int, input().split()))
+print(bisearch(0, input_data[4], checktrees, input_data))
