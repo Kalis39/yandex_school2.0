@@ -1,0 +1,22 @@
+men = [input() for i in range(int(input()))]
+numbers = [input() for j in range(int(input()))]
+max_value = 0
+counter = 0
+list_numbers = []
+
+for number in numbers:
+    number_set = set(number)
+    for man in men:
+        man_set = set(man)
+        if number_set.intersection(man_set) == man_set:
+            counter += 1
+    if counter > max_value:
+        list_numbers.clear()
+        max_value = counter
+        list_numbers.append(number)
+    elif counter == max_value:
+        list_numbers.append(number)
+    counter = 0
+
+for i in list_numbers:
+    print(i)
