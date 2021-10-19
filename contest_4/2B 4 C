@@ -1,0 +1,31 @@
+def sorting(list_v):
+    list_v.sort()
+    for result in list_v:
+        print(result)
+
+
+def addword(dictionary, key):
+    if key not in dictionary:
+        new_dict[key] = 0
+    new_dict[key] += 1
+
+
+new_dict = {}
+new_list = []
+with open("input.txt", "r") as file:
+    data = file.read().split()
+
+for word in data:
+    addword(new_dict, word)
+
+
+result_list = [(new_dict[key], key) for key in new_dict]
+result_list.sort(reverse=True)
+max_value = result_list[0][0]
+for word in result_list:
+    if word[0] != max_value:
+        sorting(new_list)
+        max_value = word[0]
+        new_list.clear()
+    new_list.append(word[1])
+sorting(new_list)
