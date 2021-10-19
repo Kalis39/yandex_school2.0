@@ -1,0 +1,18 @@
+numbers = int(input())
+new_dict = {}
+
+for i in range(numbers):
+    a, d = list(map(int, input().split()))
+    if a in new_dict:
+        new_dict[a].append(d)
+    else:
+        new_dict[a] = [d]
+
+for key in new_dict:
+    new_dict[key] = sum(new_dict[key])
+    
+keylist = new_dict.keys()
+sort_key = sorted(keylist)
+
+for value in sort_key:
+    print(value, new_dict[value])
